@@ -17,7 +17,7 @@
 
 	//$(document).ready(function() {
 	function init_the_player(){
-		console.log(loop_start);
+		//console.log(loop_start);
 		canvas = document.getElementById('waveform');
 		context = canvas.getContext('2d');
 		canvasloop = document.getElementById('looppoints');
@@ -289,7 +289,7 @@ function resizeCanvas() {
 function metadataok() {
 	
 	duration = document.getElementById('player').duration;
-	console.log("mdok", duration);
+	//console.log("mdok", duration);
 	
 	update_loop_points();
 	update_canvas_time(current_time);
@@ -344,11 +344,13 @@ function reset_loop(){
 
 function update_loop_points(s, e){
 	
-
+	if(loop_end==null){
+		loop_end=duration;
+	}
 	//loop_start = $('#slider-loop').slider('values')[ 0 ]/1000.0*duration;
 	//loop_end = $('#slider-loop').slider('values')[ 1 ]/1000.0*duration;
-console.log("ulp");
-console.log(loop_start, loop_end);
+//console.log("ulp");
+//console.log(loop_start, loop_end);
 	if(mouse_is_down_loop==0){
 		$('#slider-loop').slider({values: [ loop_start/duration*1000, loop_end/duration*1000 ]});
 		update_canvas_time(loop_start);
@@ -377,8 +379,16 @@ console.log(loop_start, loop_end);
 
 
 function the_player(ogg_file_path, png_file_path, lstart, lend, cb){
-	loop_end=lend;
-	loop_start=lstart;
+	if(loop_end!=null){
+		loop_end=lend;
+	}
+	if(loop_start!=null){
+		loop_start=lstart;
+	}else{
+		loop_start=0;
+	}
+
+	
 	var retstring="<div id='player-container' style='width:100%;padding:0px;background-color:rgba(225, 225, 225, 1);padding:5px;'> <div id='link-sample' title='lien vers le sample' style='font-size:10pt;'> <p><input style='width:100%;' id='link-sample-input' type='text' value='"+ogg_file_path+"'></input></p> </div> <div id='link-selection' title='lien vers la selection' style='font-size:10pt;'> <p><input style='width:100%;' id='link-selection-input' type='text' value='"+"'></input></p> </div> <div id='div-play-button' style='width:80px;float:left;padding-top:6px;margin-top:10px'> <button id='play' style='position:relative;margin-left:10px;width:60px;height:60px;-webkit-border-radius: 400px;-moz-border-radius: 400px;border-radius: 400px;'>play</button> <canvas width='80' height='80' id='volume-canvas' style='margin-top:-70px'></canvas> </div> <div id='div-waveform' style='float:left;'> <div id='progressbar' style='height:6px;background:#aaa;border:0px;'></div> <div id='divpng'><img src='"+png_file_path+"' width='100%' height='80'/></div> <div id='divcanvaslooppoints' style='margin-top:-80px'><canvas id='looppoints'  style='width:100%;height:80px;' ></canvas></div> <div id='divcanvastime' style='margin-top:0px'><canvas id='waveform' style='width:100%;height:80px;margin-top:-80px'></canvas></div> <div id='slider-loop' class='ui-slider ui-slider-horizontal ui-widget ui-widget-content ' style='font-size: 50%;margin-left:0px;border:0px;color:#aaa;background:#aaa;background-color:#aaa;'></div> <div id='divcanvasdisplaytime' style='margin-top:0px;'  ><canvas id='canvasdisplaytime' style='width:100%;height:15px;'></canvas></div> </div> <div id='download-button' style='float:left;width:45px;height:21px;margin-left:5px;'><button>T&eacute;l&eacute;charger le son</button></div> <div id='download-selection-button' style='float:left;width:45px;height:21px;margin-left:5px;'><button>T&eacute;l&eacute;charger la selection</button></div> <div id='clipboard-button' style='float:left;width:45px;height:21px;margin-left:5px;'><button>Lien vers le son</button></div> <div id='clipboard-selection-button' style='float:left;width:45px;height:21px;margin-left:5px;'><button>Lien vers la selection</button></div> <audio preload='metadata' id='player' src='"+ogg_file_path+"' ontimeupdate='update_canvas_time(this.currentTime);'></audio> <div id='clear' style='clear:both;'></div> </div>";
 	cb(retstring);
 
