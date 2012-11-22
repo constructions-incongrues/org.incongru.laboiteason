@@ -24,6 +24,9 @@
                 <a href="#FOSUserBundle-login" class="thumbnail" data-toggle="modal">
                   {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
                 </a>
+                <a href="#FOSUserBundle-register" class="thumbnail" data-toggle="modal">
+                  {{ 'layout.register'|trans({}, 'FOSUserBundle') }}
+                </a>
             {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
@@ -48,6 +51,15 @@
       </div>
       <div class="modal-body">
         {% render 'FOSUserBundle:Security:login' %} 
+      </div>
+    </div>
+
+    <div class="modal hide fade" id="FOSUserBundle-register">
+      <div class="modal-header">
+        <h3>Inscription</h3>
+      </div>
+      <div class="modal-body">
+        {% render 'FOSUserBundle:Registration:register' %}
       </div>
     </div>
 
