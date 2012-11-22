@@ -1,0 +1,7 @@
+parameters:
+#    constructions_incongrues_la_boite_a_son.example.class: ConstructionsIncongrues\LaBoiteASonBundle\Example
+
+services:
+#    constructions_incongrues_la_boite_a_son.example:
+#        class: %constructions_incongrues_la_boite_a_son.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

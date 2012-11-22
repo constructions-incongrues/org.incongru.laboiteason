@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>La Boîte à Son</title>
+  <!-- Bootstrap -->
+  <link href="{{ asset('bundles/constructionsincongrueslaboiteason/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+</head>
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a href="#">Se connecter</a></li>
+            <li><a href="#about">S'inscrire</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container">
+
+    <div class="hero-unit">
+      <h1>La boîte à Son</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam blandit ultricies cursus. Suspendisse sit amet mauris nisi. Pellentesque ultrices porttitor nunc, id consectetur massa convallis sit amet. Sed mollis lacinia lacus, facilisis pulvinar mi convallis et. Nulla in felis eu est tincidunt interdum a eu mauris.</p>
+      <p>
+        <a href="#addForm" role="button" class="btn btn-large btn-primary" data-toggle="modal"><i class="icon-plus-sign icon-white"></i>&nbsp;Ajouter un son</a>
+      </p>
+    </div>
+
+    <div class="modal hide fade" id="modalSound">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Titre du son</h3>
+        WAV | 44100 Hz | 1:03 | 784 Ko
+      </div>
+      <div class="modal-body">
+        
+        <p>
+          <strong>Description : </strong>
+          Pellentesque volutpat turpis sit amet ipsum laoreet ultricies. Proin ut urna dui. Sed id nibh lorem. Suspendisse potenti. Integer mollis elit vel neque tempus in ultrices metus tincidunt.
+        </p>
+        
+        <p>
+          <strong>Tags :</strong>
+<?php foreach (range(0, 5) as $i): ?>
+  <a href="#">tag<?php echo $i ?></a>,
+<?php endforeach; ?>
+        </p>
+        
+        <p>
+          <strong>Contribué par : </strong>
+          <a href="#">Constributeur 3</a>
+        </p>
+
+        <p>&nbsp;</p>
+
+        <p style="text-align:center;">
+          <audio controls="controls">
+            <source src="#" type="audio/mp3" />
+          </audio>
+        <p>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn btn-primary"><i class="icon-download-alt icon-white"></i> Télécharger</a>
+        <!-- <a href="#" class="btn btn-primary"><i class="icon-shopping-cart icon-white"></i> Ajouter au panier</a> -->
+      </div>
+    </div>
+
+    <div class="modal hide fade" id="addForm">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Ajouter un son</h3>
+      </div>
+      <div class="modal-body">
+        <form>
+          <label>Mots-clés</label>
+          <input type="text" placeholder="Mots-clés séparés par des virgules"/>
+          <span class="help-block">Quelques mots-clés décrivant le son</span>
+
+          <label>Description</label>
+          <textarea></textarea>
+          <span class="help-block">Mais c'est quoi ce son en fait ?</span>
+
+          <label>Fichier</label>
+          <input type="file" placeholder="Choisir un fichier">
+          <span class="help-block">WAV, FLAC ou AIF</span>
+          <button type="submit" class="btn">Envoyer</button>
+        </form>    
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn btn-primary"><i class="icon-upload icon-white"></i> Envoyer</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span6">
+        <h3>Par tag</h3>
+        <?php foreach (range(0, 100) as $i): ?>
+        <a href="#">tag<?php echo $i ?></a> 
+      <?php endforeach; ?>
+    </div>
+
+    <div class="span6">
+      <h3>Par contributeur</h3>
+      <?php foreach (range(0, 25) as $i): ?>
+      <a href="#">Contributeur <?php echo $i ?></a> 
+    <?php endforeach; ?>
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <h3>Les sons</h3>
+      <div class="btn-group well">
+        <button class="btn">Par date <i class="icon-arrow-down"></i></button>
+        <button class="btn">Par date <i class="icon-arrow-up"></i></button>
+      </div>
+
+      <div class="pagination pagination-centered">
+        <ul>
+          <li class="disabled"><a href="#"><i class="icon-arrow-left"></i></a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#"><i class="icon-arrow-right"></i></a></li>
+        </ul>
+      </div>
+
+      <ul class="thumbnails">
+<?php foreach (range(0,100) as $i): ?>
+        <li class="span1">
+          <a href="#modalSound" class="thumbnail" data-toggle="modal">
+            <img src="http://placehold.it/75x75" alt="">
+          </a>
+        </li>
+<?php endforeach; ?>        
+      </ul>
+
+      <div class="pagination pagination-centered">
+        <ul>
+          <li class="disabled"><a href="#"><i class="icon-arrow-left"></i></a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#"><i class="icon-arrow-right"></i></a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="{{ asset('bundles/constructionsincongrueslaboiteason/bootstrap/js/bootstrap.min.js') }}"></script>
+</body>
+</html>

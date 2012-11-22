@@ -1,0 +1,3 @@
+constructions_incongrues_la_boite_a_son_homepage:
+    pattern:  /
+    defaults: { _controller: ConstructionsIncongruesLaBoiteASonBundle:Default:index }

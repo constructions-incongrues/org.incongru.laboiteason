@@ -1,0 +1,8 @@
+constructions_incongrues_la_boite_a_son:
+    resource: "@ConstructionsIncongruesLaBoiteASonBundle/Resources/config/routing.yml"
+    prefix:   /home
+
+# Internal routing configuration to handle ESI
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal
