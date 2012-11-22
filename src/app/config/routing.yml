@@ -1,6 +1,6 @@
 constructions_incongrues_la_boite_a_son:
     resource: "@ConstructionsIncongruesLaBoiteASonBundle/Resources/config/routing.yml"
-    prefix:   /home
+    prefix:   /
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
