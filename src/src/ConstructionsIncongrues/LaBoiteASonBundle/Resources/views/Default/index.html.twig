@@ -15,8 +15,16 @@
       <div class="container">
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li><a href="#">Se connecter</a></li>
-            <li><a href="#about">S'inscrire</a></li>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="#FOSUserBundle-login" class="thumbnail" data-toggle="modal">
+                  {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -32,6 +40,15 @@
       <p>
         <a href="#addForm" role="button" class="btn btn-large btn-primary" data-toggle="modal"><i class="icon-plus-sign icon-white"></i>&nbsp;Ajouter un son</a>
       </p>
+    </div>
+
+    <div class="modal hide fade" id="FOSUserBundle-login">
+      <div class="modal-header">
+        <h3>Connexion</h3>
+      </div>
+      <div class="modal-body">
+        {% render 'FOSUserBundle:Security:login' %} 
+      </div>
     </div>
 
     <div class="modal hide fade" id="modalSound">
