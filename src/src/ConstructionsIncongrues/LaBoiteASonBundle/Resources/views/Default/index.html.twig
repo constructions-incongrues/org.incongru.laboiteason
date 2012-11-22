@@ -40,11 +40,14 @@
     <div class="hero-unit">
       <h1>La boîte à Son</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam blandit ultricies cursus. Suspendisse sit amet mauris nisi. Pellentesque ultrices porttitor nunc, id consectetur massa convallis sit amet. Sed mollis lacinia lacus, facilisis pulvinar mi convallis et. Nulla in felis eu est tincidunt interdum a eu mauris.</p>
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
       <p>
         <a href="#addForm" role="button" class="btn btn-large btn-primary" data-toggle="modal"><i class="icon-plus-sign icon-white"></i>&nbsp;Ajouter un son</a>
       </p>
+      {% endif %}
     </div>
 
+    <!-- Login -->
     <div class="modal hide fade" id="FOSUserBundle-login">
       <div class="modal-header">
         <h3>Connexion</h3>
@@ -54,6 +57,7 @@
       </div>
     </div>
 
+    <!-- Registration -->
     <div class="modal hide fade" id="FOSUserBundle-register">
       <div class="modal-header">
         <h3>Inscription</h3>
