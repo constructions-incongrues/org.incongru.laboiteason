@@ -4,3 +4,6 @@ app/cache/*
 app/logs/*
 build/
 vendor/*
+
+# -dist
+src/app/config/parameters.yml
